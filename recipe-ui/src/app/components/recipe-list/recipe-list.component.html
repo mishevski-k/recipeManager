@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Recipes</h2>
+
+  <div *ngIf="getSelectedRecipe()">
+    <br/>
+    <h4>{{getSelectedRecipe().name}}</h4>
+    <p>{{getSelectedRecipe().description}}</p>
+    <br/>
+  </div>
+
+  <div *ngFor="let recipe of getRecipes()" class="mb-5">
+    <p (click)="onSelect(recipe)" style="cursor: pointer">
+      {{recipe.name}}
+    </p>
+    <a [routerLink]="['/recipes', recipe.id]" class="btn btn-success">Edit</a>
+    <a (click)="onDelete(recipe)" class="ml-5 btn btn-danger text-white " style="margin-left: 10px">Delete</a>
+  </div>
+  <a [routerLink]="['/recipes']" class="btn btn-primary">Add Recipe</a>
+</div>
